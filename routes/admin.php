@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth.admin:admin'], function(){
         // Route::get('/select-search', [AdminSearchController::class, 'selectSearch'])->name('selectsearch');
     });
 
-    //admin
+    //staff
     Route::prefix('/manager-staff')->as('staff.')->group(function(){
         Route::controller(App\Admin\Http\Controllers\Staff\StaffController::class)->group(function(){
             Route::get('/them', 'create')->name('create');
@@ -53,6 +53,36 @@ Route::group(['middleware' => 'auth.admin:admin'], function(){
         });
     });
 
+    //post
+    Route::prefix('/manager-post')->as('post.')->group(function(){
+        Route::controller(App\Admin\Http\Controllers\Post\PostController::class)->group(function(){
+            Route::get('/them', 'create')->name('create');
+            Route::get('/', 'index')->name('index');
+            Route::get('/sua/{id}', 'edit')->name('edit');
+            Route::put('/sua', 'update')->name('update');
+            Route::post('/them', 'store')->name('store');
+            Route::delete('/xoa/{id}', 'delete')->name('delete');
+        });
+    });
+
+    //category
+    Route::prefix('/manager-category')->as('category.')->group(function(){
+        Route::controller(App\Admin\Http\Controllers\Category\CategoryController::class)->group(function(){
+            Route::get('/them', 'create')->name('create');
+            Route::get('/', 'index')->name('index');
+            Route::get('/sua/{id}', 'edit')->name('edit');
+            Route::put('/sua', 'update')->name('update');
+            Route::post('/them', 'store')->name('store');
+            Route::delete('/xoa/{id}', 'delete')->name('delete');
+        });
+    });
+
+    //search
+    Route::prefix('/search')->as('search.')->group(function () {
+        Route::prefix('/select')->as('select.')->group(function () {
+            Route::get('/post', [App\Admin\Http\Controllers\Post\PostSearchSelectController::class, 'selectSearch'])->name('post');
+        });
+    });
     //ckfinder
     Route::prefix('/quan-ly-file')->as('ckfinder.')->group(function(){
         Route::any('/ket-noi', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')
@@ -70,6 +100,8 @@ Route::group(['middleware' => 'auth.admin:admin'], function(){
         Route::get('/', 'index')->name('index');
         Route::put('/', 'update')->name('update');
     });
+
+
 
     Route::controller(App\Admin\Http\Controllers\Auth\ChangePasswordController::class)
     ->prefix('/password')

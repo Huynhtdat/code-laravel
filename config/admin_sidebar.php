@@ -69,4 +69,45 @@ return [
             ],
         ]
     ],
+    [
+        'title' => 'QL Bài viết',
+        'routeName' => null,
+        'icon' => '<i class="ti ti-calendar"></i>',
+        'roles' => [],
+        'sub' => [
+            [
+                'title' => 'Thêm Bài viết',
+                'routeName' => 'admin.post.create',
+                'icon' => '<i class="ti ti-plus"></i>',
+                'roles' => [],
+            ],
+            [
+                'title' => 'DS Bài viết',
+                'routeName' => 'admin.post.index',
+                'icon' => '<i class="ti ti-list"></i>',
+                'roles' => [],
+            ],
+        ]
+    ],
+
+    [
+        'title' => 'QL Danh mục',
+        'routeName' => null,
+        'icon' => '<i class="ti-menu-alt"></i>',
+        'roles' => [],
+        'sub' => [
+            [
+                'title' => 'Thêm Bài viết',
+                'routeName' => 'admin.category.create',
+                'icon' => '<i class="ti ti-plus"></i>',
+                'roles' => [],
+            ],
+            [
+                'title' => 'DS Bài viết',
+                'routeName' => 'admin.category.index',
+                'icon' => '<i class="ti ti-list"></i>',
+                'roles' => [],
+            ],
+        ]
+    ],
 ];
